@@ -1,0 +1,115 @@
+A container is:
+
+A process that runs in its own isolated view of the operating system, bundled with everything it needs except the kernel.
+
+
+
+Containers do not virtualize hardware.
+Containers virtualize the operating system view.
+
+
+🧠 The Two Pillars of Containers
+1. Namespaces → Isolation
+2. Cgroups → Resource control
+2.1 Namespaces: “Each process sees a different world”
+Analogy: Magical sunglasses
+
+Imagine giving different people special sunglasses:
+
+One sees only their house
+
+Another sees only their street
+
+Another sees only their city
+
+Everyone is on the same planet, but their perception is different.
+
+Linux namespaces do exactly this.
+
+
+
+| Namespace | What it isolates   |
+| --------- | ------------------ |
+| PID       | Process IDs        |
+| NET       | Network interfaces |
+| MNT       | Filesystem mounts  |
+| UTS       | Hostname           |
+| IPC       | Shared memory      |
+| USER      | User IDs           |
+
+
+
+
+
+2.2 Cgroups: “How much are you allowed to eat?”
+Analogy: Buffet with a plate limit
+
+You’re at an all-you-can-eat buffet (CPU, memory, disk I/O).
+
+Without cgroups → one person can eat everything
+
+With cgroups → each person gets:
+
+Max calories (CPU)
+
+Max volume (RAM)
+
+Max trips (IO)
+
+Cgroups enforce:
+
+CPU limits
+
+Memory limits
+
+Disk IO limits
+
+If a container exceeds memory → OOM killed (not the host).
+
+
+
+
+
+
+Image layering intuition
+Analogy: Transparent sheets
+
+Imagine building a drawing:
+
+Base sheet → Ubuntu
+
+Next sheet → Python
+
+Next sheet → Your app
+
+Top sheet → Config
+
+Each sheet:
+
+Is read-only
+
+Can be reused
+
+Can be cached
+
+At runtime:
+
+A thin read-write layer is added on top
+
+This is why containers start fast
+
+
+
+
+Why layering matters
+
+Efficient storage
+
+Fast distribution
+
+Shared layers across images
+
+Deterministic builds
+
+
+
