@@ -1,0 +1,36 @@
+What Docker really is
+
+Docker is:
+
+A toolchain
+A runtime
+A packaging format
+A developer UX layer
+It makes kernel features usable by humans.
+
+Docker architecture (important)
+Docker CLI → what you type
+Docker daemon → does the work
+Container runtime → actually runs containers
+Registry → image storage (Docker Hub)
+
+
+Dockerfile = Build recipe
+Analogy: Cooking instructions
+
+A Dockerfile is not a container.
+It’s a recipe:
+
+FROM python:3.11
+COPY app.py /app.py
+CMD ["python", "/app.py"]
+
+Deterministic
+Layered
+Cached
+
+
+
+
+
+
